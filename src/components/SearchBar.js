@@ -7,12 +7,11 @@ class SearchBar extends Component {
     this.state = { searchTerm: '' };
   }
 
-  onInputChange(searchTerm) {
+  handlerInputChange(searchTerm) {
     this.setState({ searchTerm });
+    if (searchTerm.trim() !== '') {
       this.props.onSearchTermChange(searchTerm);
-      console.log(this.state.searchTerm);
-      console.log('onInputChange event happened!');
-    
+    }
   }
 
   render() {
@@ -20,9 +19,8 @@ class SearchBar extends Component {
       <div className="search-bar-container">
         <input
           value={this.state.searchTerm}
-          onChange={event => { 
-            this.onInputChange(event.target.value);
-            console.log('Input changed!');
+          onChange={(event) => { 
+            this.handlerInputChange(event.target.value);
           }}
         />
       </div>
