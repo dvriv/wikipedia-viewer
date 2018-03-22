@@ -17,12 +17,16 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="search-bar-container">
+        <div className="search-bar-title">
+          <h1>Wikipedia Viewer</h1>
+        </div>
         <input
           value={this.state.searchTerm}
-          onChange={(event) => { 
+          onChange={(event) => {
             this.handlerInputChange(event.target.value);
           }}
         />
+        { !this.props.firstSearchDone && <span>Or get a random entry</span> }
       </div>
     );
   }

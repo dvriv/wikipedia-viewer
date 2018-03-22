@@ -11,6 +11,7 @@ class Search extends Component {
 
     this.state = {
       searchResults: [],
+      firstSearchDone: false,
     };
   }
 
@@ -19,6 +20,7 @@ class Search extends Component {
     if (results) {
       this.setState({
         searchResults: results.query.pages,
+        firstSearchDone: true,
       });
     }
   }
@@ -27,10 +29,11 @@ class Search extends Component {
     const doSearch = debounce(searchTerm => this.doSearch(searchTerm), 300);
     return (
       <div className="search-container">
-        <h1>Wikipedia Viewer</h1>
-        <SearchBar onSearchTermChange={searchTerm => doSearch(searchTerm)} />
+        <SearchBar
+          firstSearchDone={this.state.firstSearchDone}
+          onSearchTermChange={searchTerm => doSearch(searchTerm)}
+        />
         <ResultList searchResults={this.state.searchResults} />
-        <span>Or get a random entry</span>
       </div>
     );
   }
