@@ -76,3 +76,10 @@ html, body, #root {
   padding:10px;
 }
 
+.get-random-entry a {
+text-decoration:none;
+}
+
+.get-random-entry a:hover {
+  text-decoration: underline;
+}
